@@ -1,0 +1,37 @@
+<mat-progress-bar *ngIf="this.load" mode="indeterminate"></mat-progress-bar>
+
+<h2>
+    Estudiantes
+</h2>
+<hr>
+<button mat-raised-button (click)="this.addStudent()" color="primary">
+    Nuevo
+</button>
+
+<table>
+    <thead>
+        <th>
+            Identificación
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+
+        </th>
+    </thead>
+    <tr *ngFor="let student of this.Models; let i=index">
+        <td>{{student.identification}}</td>
+        <td>{{student.name}}</td>
+        <td>
+            <!-- <button (click)="this.updateStudent(i)" mat-mini-fab color="primary"
+                aria-label="Example icon button with a menu icon">
+                <mat-icon>edit</mat-icon>
+            </button> -->
+            <button (click)="this.editUpdate(student.id)" mat-mini-fab color="" style="margin-left: 15px;"
+                aria-label="Example icon button with a menu icon">
+                <mat-icon>school</mat-icon>
+            </button>
+        </td>
+    </tr>
+</table>

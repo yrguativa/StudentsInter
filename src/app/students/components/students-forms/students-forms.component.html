@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>
+    {{ this.Model === undefined  || this.Model.id === undefined || this.Model.id === null ? 'Nuevo':' Actualizar'  }}
+    estudiante
+</h2>
+<div class="example-container">
+    <mat-form-field appearance="outline">
+        <mat-label>Identificación</mat-label>
+        <input matInput value="this.Model.identification" #IdentificationField type="number" maxlength="15">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput #nameField maxlength="45">
+    </mat-form-field>
+</div>
+<mat-dialog-actions class="modal-footer">
+    <button mat-button (click)="this.save(IdentificationField.value, nameField.value)" [disabled]="IdentificationField.value !== undefined && IdentificationField.value !== '' &&
+    nameField.value !== undefined && nameField.value !== '' ? null: 'true' " color="primary">Guardar</button>
+</mat-dialog-actions>

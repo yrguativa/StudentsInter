@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>
+    Agregar Asignatura
+</h2>
+<div class="example-container">
+    <form [formGroup]="this.FormSubject">
+        <mat-form-field appearance="outline">
+            <mat-label>Asginatura</mat-label>
+            <mat-select formControlName="subject">
+                <mat-option *ngFor="let subject of this.Subjects" value="{{subject.id}}">
+                    {{subject.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+    <dl *ngIf="this.SubjectSelect != undefined">
+        <dt>
+            Profesor:
+        </dt>
+        <dd>
+            {{this.SubjectSelect.teacher.name}}
+        </dd>
+        <dt>
+            Estudiantes:
+        </dt>
+        <dd *ngIf="this.SubjectSelect.students!= undefined">
+            <ng-container *ngFor="let student of this.SubjectSelect.students">
+                {{student.name}} <br>
+            </ng-container>
+        </dd>
+    </dl>
+    <p>
+        <span *ngFor="let alert of this.Alerts" class="alert-danger">
+            <mat-icon>warning </mat-icon> {{alert}}
+        </span>
+    </p>
+</div>
+<mat-dialog-actions class="modal-footer">
+    <button (click)="this.save()" [disabled]="this.Alerts === undefined || this.Alerts.length == 0 ? null: 'true' "
+        mat-button color="primary">Guardar</button>
+</mat-dialog-actions>

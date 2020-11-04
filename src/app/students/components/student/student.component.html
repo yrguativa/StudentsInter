@@ -1,0 +1,74 @@
+<mat-progress-bar *ngIf="this.load" mode="indeterminate"></mat-progress-bar>
+<h2>Estudiante</h2>
+<div *ngIf="this.Model!= undefined">
+    <p>
+        <samp class="title">
+            Identification:
+        </samp>
+        <samp>
+            {{this.Model.identification}}
+        </samp>
+    </p>
+
+    <p>
+        <samp class="title">
+            Nombre:
+        </samp>
+        <samp>
+            {{this.Model.name}}
+        </samp>
+    </p>
+
+    <p class="title">Creditos</p>
+    <p>
+        <samp matBadge="{{this.LimitCredits}}" matBadgeOverlap="false">
+            Limite de créditos:
+        </samp>
+        <samp matBadge="{{this.Credits}}" matBadgeOverlap="false" style="margin-left: 30px; margin-right: 15px;">
+            Créditos disponibles:
+        </samp>
+    </p>
+    <p class="title">Asignaturas</p>
+    <ng-container *ngIf="this.Credits > 0; else elseTemplate">
+        <button (click)="this.addSubject()" mat-raised-button >
+            Agregar Asignatura
+        </button>
+    </ng-container>
+    <ng-template #elseTemplate>
+        <span class="alert-danger">
+            <mat-icon>warning </mat-icon> Ha llegado al limite de creditos
+        </span>
+
+    </ng-template>
+
+
+    <div style="margin-top: 10px;">
+        <table>
+            <thead>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Profesor
+                </th>
+                <th>
+                    Creditos
+                </th>
+                <th>
+
+                </th>
+            </thead>
+            <tr *ngFor="let subject of this.Model.subjects; let i=index">
+                <td>{{subject.name}}</td>
+                <td>{{subject.teacher.name}}</td>
+                <td>
+                    <mat-chip-list #chipList>
+                        <mat-chip color="primary" selected>
+                            {{subject.credits}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
