@@ -1,0 +1,33 @@
+<div class="wraper_login">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="signIn()">
+        <h2> {{"logIn.title" | translate }}</h2>
+        <mat-progress-bar *ngIf="this.pageIsLoad" mode="indeterminate"></mat-progress-bar>
+        <mat-form-field>
+          <input matInput [placeholder]="'logIn.user' | translate" formControlName="username" required>
+          <mat-error *ngIf="loginForm.controls['username'].touched && loginForm.controls['username'].errors?.required">
+            {{"logIn.errorRequired" | translate }}
+          </mat-error>
+          <mat-error *ngIf="loginForm.controls['username'].touched && loginForm.controls['username'].errors?.email">
+            {{"logIn.errorEmail" | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="password" [placeholder]="'logIn.password' | translate" formControlName="password"
+            required>
+          <mat-error *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].errors?.required">
+            {{"logIn.errorRequired" | translate:{'field': ('logIn.password' | translate | lowercase)} }}
+          </mat-error>
+        </mat-form-field>
+        <mat-error *ngIf="this.errorMessage">
+          {{this.errorMessage}}
+        </mat-error>
+        <button [disabled]="!this.loginForm.valid" mat-raised-button color="primary">
+          {{"logIn.title" | translate }}
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

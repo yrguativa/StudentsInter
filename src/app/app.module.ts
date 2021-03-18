@@ -1,35 +1,45 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-// Material
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatCardModule } from '@angular/material/card';
-import { HttpClientModule } from '@angular/common/http';
-
-// Models of application
-import { AppRoutingModule } from './app-routing.module';
-import { StudentsModule } from './students/students.module';
-
-// Components
+import { environment } from 'src/environments/environment';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { LoginModule } from './login/login.module';
+import { HomeModule } from './shared/home.module';
 
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/app/', '.json');
+}
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    CommonModule,
     BrowserModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatCardModule,
     HttpClientModule,
+    TranslateModule.forRoot({     
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      },
+      defaultLanguage: 'es',
+      isolate: true
+    }),
     ReactiveFormsModule,
-    StudentsModule
+    HomeModule,
+    LoginModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

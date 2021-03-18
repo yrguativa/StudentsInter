@@ -1,0 +1,27 @@
+.wraper_login
+    height: 100vh
+    width: 100%
+    display: grid
+    grid-template-columns: 70% 30%
+    justify-items: center
+    align-items: center
+    background-image: url('https://bynder.hexagon.com/m/78c4e86165a5fd8d/Web_Marquee-AdobeStock_245829313.jpg')
+    object-fit: fill
+
+mat-card
+    grid-column: 2 / 3
+    margin-right: 20px
+    form
+        display: flexbox
+        align-items: center
+        justify-items: center
+        
+        h2
+            text-align: center
+        mat-form-field 
+            width: 100%
+
+@media only screen and (max-width: 600px)
+    mat-card
+        grid-column: 1 / 3
+        margin: 0px 10px

@@ -1,0 +1,11 @@
+{
+    "title": "Glod",
+    "logIn": {
+        "title": "Iniciar Sesión",
+        "user": "Usuario",
+        "password": "Contraseña",
+        "errorEmail": "Por favor ingrese su dirección de correo electrónico válida",
+        "errorRequired": "Campo {{field}} requerido",
+        "errorLogIn": "Usuario y contraseña no son validos"
+    }
+}

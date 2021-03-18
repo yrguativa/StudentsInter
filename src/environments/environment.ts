@@ -4,7 +4,16 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: 'https://localhost:5001'
+  firebase: {
+    apiKey: "AIzaSyBKZ2GyqOzcTb_pHAL2tPzS4f_Rnnx_srY",
+    authDomain: "church-af1f6.firebaseapp.com",
+    databaseURL: "https://church-af1f6.firebaseio.com",
+    projectId: "church-af1f6",
+    storageBucket: "church-af1f6.appspot.com",
+    messagingSenderId: "538036687775",
+    appId: "1:538036687775:web:51151d20bbea44ed70e3aa",
+    measurementId: "G-F8BJXP3D5D"
+  }
 };
 
 /*

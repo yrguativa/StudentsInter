@@ -1,0 +1,11 @@
+{
+    "title": "Glod",
+    "logIn": {
+        "title": "Log In",
+        "user": "User",
+        "password": "Paswword",
+        "errorEmail":"Please provide a valid email address",
+        "errorRequired":"Field {{field}} is required",
+        "errorLogIn": "Username and password are not valid"
+    }
+}
